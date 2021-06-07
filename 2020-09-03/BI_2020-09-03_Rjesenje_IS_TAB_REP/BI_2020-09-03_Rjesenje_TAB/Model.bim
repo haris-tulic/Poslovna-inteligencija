@@ -1,0 +1,385 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer localhost Ispit_2020_09_03",
+        "connectionString": "Provider=SQLNCLI11;Data Source=.;Persist Security Info=false;Integrated Security=SSPI;Initial Catalog=Ispit_2020_09_03",
+        "impersonationMode": "impersonateAccount",
+        "account": "imra11114@hotmail.com",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "dim_ocjena",
+        "columns": [
+          {
+            "name": "dim_ocjena_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_ocjena_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "polaznikID",
+            "dataType": "int64",
+            "sourceColumn": "polaznikID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "ocjenaPohadjanja",
+            "dataType": "int64",
+            "sourceColumn": "ocjenaPohadjanja",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "nazivTecaja",
+            "dataType": "string",
+            "sourceColumn": "nazivTecaja",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "datumPocetka",
+            "dataType": "dateTime",
+            "sourceColumn": "datumPocetka",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "god_pocetka",
+            "dataType": "int64",
+            "sourceColumn": "god_pocetka",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_ocjena",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[dim_ocjena].* FROM [dbo].[dim_ocjena] ",
+              "dataSource": "SqlServer localhost Ispit_2020_09_03"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "sr_ocj",
+            "expression": "ROUND(AVERAGE(dim_ocjena[ocjenaPohadjanja]),2)"
+          },
+          {
+            "name": "br_ocj_po_god",
+            "expression": "CALCULATE(COUNT(dim_ocjena[ocjenaPohadjanja]), dim_ocjena[god_pocetka] >= 2010, dim_ocjena[god_pocetka] <=2012)"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[dim_ocjena].* FROM [dbo].[dim_ocjena] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_ocjena"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "dim_polaznik_detalji",
+        "columns": [
+          {
+            "name": "dim_polaznik_detalji_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_polaznik_detalji_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "polaznikID",
+            "dataType": "int64",
+            "sourceColumn": "polaznikID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "spol",
+            "dataType": "string",
+            "sourceColumn": "spol",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "datumRodjenja",
+            "dataType": "dateTime",
+            "sourceColumn": "datumRodjenja",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "ustanovaID",
+            "dataType": "int64",
+            "sourceColumn": "ustanovaID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "nazivGrada",
+            "dataType": "string",
+            "sourceColumn": "nazivGrada",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "nazivZupanije",
+            "dataType": "string",
+            "sourceColumn": "nazivZupanije",
+            "sourceProviderType": "WChar"
+          },
+          {
+            "name": "nazivTipaPolaznik",
+            "dataType": "string",
+            "sourceColumn": "nazivTipaPolaznik",
+            "sourceProviderType": "WChar"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_polaznik_detalji",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[dim_polaznik_detalji].* FROM [dbo].[dim_polaznik_detalji] ",
+              "dataSource": "SqlServer localhost Ispit_2020_09_03"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "br_pol_zup",
+            "expression": "CALCULATE(COUNT(dim_polaznik_detalji[nazivZupanije]), dim_polaznik_detalji[nazivZupanije]=\"Grad Zagreb\", dim_polaznik_detalji[nazivTipaPolaznik] = \"student\", dim_polaznik_detalji[spol] = \"F\")"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[dim_polaznik_detalji].* FROM [dbo].[dim_polaznik_detalji] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_polaznik_detalji"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "dim_redovnost",
+        "columns": [
+          {
+            "name": "dim_redovnost_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_redovnost_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "polaznikID",
+            "dataType": "int64",
+            "sourceColumn": "polaznikID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "datumPohadjanja",
+            "dataType": "dateTime",
+            "sourceColumn": "datumPohadjanja",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "prisutan",
+            "dataType": "int64",
+            "sourceColumn": "prisutan",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_redovnost",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[dim_redovnost].* FROM [dbo].[dim_redovnost] ",
+              "dataSource": "SqlServer localhost Ispit_2020_09_03"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "prisutni",
+            "expression": "CALCULATE(COUNT(dim_redovnost[prisutan]), YEAR(dim_redovnost[datumPohadjanja])=2011)",
+            "kpi": {
+              "targetExpression": "10",
+              "statusGraphic": "Traffic Light - Single",
+              "statusExpression": [
+                "var x='dim_redovnost'[prisutni] return",
+                "            if(ISBLANK(x),BLANK(),",
+                "                    If(x<2,-1,",
+                "\t                If(x<8,0,1)",
+                "                )",
+                "            )",
+                "            "
+              ],
+              "annotations": [
+                {
+                  "name": "GoalType",
+                  "value": "StaticValue"
+                },
+                {
+                  "name": "KpiStatusType",
+                  "value": "Linear"
+                },
+                {
+                  "name": "KpiThresholdType",
+                  "value": "Absolute"
+                },
+                {
+                  "name": "KpiThresholdOrdering",
+                  "value": "Ascending"
+                },
+                {
+                  "name": "KpiThresholdCount",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_0",
+                  "value": "2"
+                },
+                {
+                  "name": "KpiThreshold_1",
+                  "value": "8"
+                }
+              ]
+            }
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[dim_redovnost].* FROM [dbo].[dim_redovnost] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_redovnost"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "fact_polaznik",
+        "columns": [
+          {
+            "name": "fact_polaznik_key",
+            "dataType": "int64",
+            "sourceColumn": "fact_polaznik_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "polaznikID",
+            "dataType": "int64",
+            "sourceColumn": "polaznikID",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dim_polaznik_detalji_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_polaznik_detalji_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dim_ocjena_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_ocjena_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dim_redovnost_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_redovnost_key",
+            "sourceProviderType": "Integer"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_polaznik",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[fact_polaznik].* FROM [dbo].[fact_polaznik] ",
+              "dataSource": "SqlServer localhost Ispit_2020_09_03"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "br_polaznika",
+            "expression": "COUNT(fact_polaznik[polaznikID])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[fact_polaznik].* FROM [dbo].[fact_polaznik] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "fact_polaznik"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "18837657-dcba-49b4-a11d-e520d76c18b4",
+        "fromTable": "fact_polaznik",
+        "fromColumn": "dim_ocjena_key",
+        "toTable": "dim_ocjena",
+        "toColumn": "dim_ocjena_key"
+      },
+      {
+        "name": "8e5b6593-83e5-4cb2-a969-50133fd48cdc",
+        "fromTable": "fact_polaznik",
+        "fromColumn": "dim_polaznik_detalji_key",
+        "toTable": "dim_polaznik_detalji",
+        "toColumn": "dim_polaznik_detalji_key"
+      },
+      {
+        "name": "2302eab3-24f1-46b1-985b-28809182833d",
+        "fromTable": "fact_polaznik",
+        "fromColumn": "dim_redovnost_key",
+        "toTable": "dim_redovnost",
+        "toColumn": "dim_redovnost_key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

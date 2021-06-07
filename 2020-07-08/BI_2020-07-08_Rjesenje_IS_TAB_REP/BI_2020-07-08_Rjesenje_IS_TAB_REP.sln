@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1300
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "BI_2020-07-08_Rjesenje_IS", "BI_2020-07-08_Rjesenje_IS\BI_2020-07-08_Rjesenje_IS.dtproj", "{6C154BCE-D397-4B14-B980-52FED9561E88}"
+EndProject
+Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "BI_2020-07-08_Rjesenje_TAB", "BI_2020-07-08_Rjesenje_TAB\BI_2020-07-08_Rjesenje_TAB.smproj", "{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "IB_2020-07-08_Rjesenje_REP", "BI_2020-07-08_Rjesenje_REP\IB_2020-07-08_Rjesenje_REP.rptproj", "{B09E536F-BB35-446A-A751-9BA9C862D4C7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		DebugLocal|x86 = DebugLocal|x86
+		Development|x86 = Development|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.Debug|x86.ActiveCfg = Development
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.Debug|x86.Build.0 = Development
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.DebugLocal|x86.ActiveCfg = Development
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.DebugLocal|x86.Build.0 = Development
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.Development|x86.ActiveCfg = Development
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.Development|x86.Build.0 = Development
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.Release|x86.ActiveCfg = Development
+		{6C154BCE-D397-4B14-B980-52FED9561E88}.Release|x86.Build.0 = Development
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Debug|x86.ActiveCfg = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Debug|x86.Build.0 = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Debug|x86.Deploy.0 = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.DebugLocal|x86.ActiveCfg = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.DebugLocal|x86.Build.0 = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.DebugLocal|x86.Deploy.0 = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Development|x86.ActiveCfg = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Development|x86.Build.0 = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Development|x86.Deploy.0 = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Release|x86.ActiveCfg = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Release|x86.Build.0 = Development|x86
+		{DDE6486F-4A47-41AC-B9BF-660DB0BA7445}.Release|x86.Deploy.0 = Development|x86
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Debug|x86.ActiveCfg = Debug
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Debug|x86.Build.0 = Debug
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Debug|x86.Deploy.0 = Debug
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.DebugLocal|x86.ActiveCfg = DebugLocal
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.DebugLocal|x86.Build.0 = DebugLocal
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.DebugLocal|x86.Deploy.0 = DebugLocal
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Development|x86.ActiveCfg = 
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Development|x86.Build.0 = 
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Development|x86.Deploy.0 = 
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Release|x86.ActiveCfg = Release
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Release|x86.Build.0 = Release
+		{B09E536F-BB35-446A-A751-9BA9C862D4C7}.Release|x86.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {995FE16F-A171-4CBF-B664-1A6620B0ED1F}
+	EndGlobalSection
+EndGlobal

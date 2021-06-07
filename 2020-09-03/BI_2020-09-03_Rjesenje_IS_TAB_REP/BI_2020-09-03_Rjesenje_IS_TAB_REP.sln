@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.1300
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "BI_2020-09-03_Rjesenje_IS", "BI_2020-09-03_Rjesenje_IS\BI_2020-09-03_Rjesenje_IS.dtproj", "{196B9404-139C-4286-85C8-0781A6E5D596}"
+EndProject
+Project("{6870E480-7721-4708-BFB8-9AE898AA21B3}") = "BI_2020-09-03_Rjesenje_TAB", "BI_2020-09-03_Rjesenje_TAB\BI_2020-09-03_Rjesenje_TAB.smproj", "{8CE414BB-95B2-4C99-9E03-51BA72086E22}"
+EndProject
+Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "BI_2020-09-03_Rjesenje_REP", "BI_2020-09-03_Rjesenje_REP\BI_2020-09-03_Rjesenje_REP.rptproj", "{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		DebugLocal|x86 = DebugLocal|x86
+		Development|x86 = Development|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{196B9404-139C-4286-85C8-0781A6E5D596}.Debug|x86.ActiveCfg = Development
+		{196B9404-139C-4286-85C8-0781A6E5D596}.Debug|x86.Build.0 = Development
+		{196B9404-139C-4286-85C8-0781A6E5D596}.DebugLocal|x86.ActiveCfg = Development
+		{196B9404-139C-4286-85C8-0781A6E5D596}.DebugLocal|x86.Build.0 = Development
+		{196B9404-139C-4286-85C8-0781A6E5D596}.Development|x86.ActiveCfg = Development
+		{196B9404-139C-4286-85C8-0781A6E5D596}.Development|x86.Build.0 = Development
+		{196B9404-139C-4286-85C8-0781A6E5D596}.Release|x86.ActiveCfg = Development
+		{196B9404-139C-4286-85C8-0781A6E5D596}.Release|x86.Build.0 = Development
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Debug|x86.ActiveCfg = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Debug|x86.Build.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Debug|x86.Deploy.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DebugLocal|x86.ActiveCfg = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DebugLocal|x86.Build.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.DebugLocal|x86.Deploy.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.ActiveCfg = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.Build.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Development|x86.Deploy.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Release|x86.ActiveCfg = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Release|x86.Build.0 = Development|x86
+		{8CE414BB-95B2-4C99-9E03-51BA72086E22}.Release|x86.Deploy.0 = Development|x86
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Debug|x86.ActiveCfg = Debug
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Debug|x86.Build.0 = Debug
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Debug|x86.Deploy.0 = Debug
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.DebugLocal|x86.ActiveCfg = DebugLocal
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.DebugLocal|x86.Build.0 = DebugLocal
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Development|x86.ActiveCfg = DebugLocal
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Development|x86.Build.0 = DebugLocal
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Release|x86.ActiveCfg = Release
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Release|x86.Build.0 = Release
+		{B714C8D7-FE21-4D86-ACCF-9CBA050712D9}.Release|x86.Deploy.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {29793314-1E50-44EE-BBA6-94E00D6D04AF}
+	EndGlobalSection
+EndGlobal

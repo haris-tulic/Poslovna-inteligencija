@@ -1,0 +1,382 @@
+{
+  "name": "SemanticModel",
+  "compatibilityLevel": 1200,
+  "model": {
+    "culture": "en-US",
+    "dataSources": [
+      {
+        "name": "SqlServer localhost Ispit_2020_08_07",
+        "connectionString": "Provider=SQLNCLI11;Data Source=.;Initial Catalog=Ispit_2020_08_07;Integrated Security=SSPI;Persist Security Info=false",
+        "impersonationMode": "impersonateAccount",
+        "account": "imra11114@hotmail.com",
+        "annotations": [
+          {
+            "name": "ConnectionEditUISource",
+            "value": "SqlServer"
+          }
+        ]
+      }
+    ],
+    "tables": [
+      {
+        "name": "dim_orders_customers",
+        "columns": [
+          {
+            "name": "dim_orders_customers_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_orders_customers_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "order_id",
+            "dataType": "int64",
+            "sourceColumn": "order_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "int64",
+            "sourceColumn": "customer_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "order_date",
+            "dataType": "dateTime",
+            "sourceColumn": "order_date",
+            "formatString": "General Date",
+            "sourceProviderType": "DBDate"
+          },
+          {
+            "name": "state",
+            "dataType": "string",
+            "sourceColumn": "state",
+            "sourceProviderType": "Char"
+          },
+          {
+            "type": "calculated",
+            "name": "godina_narudzbe",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "YEAR([order_date])"
+          },
+          {
+            "type": "calculated",
+            "name": "mjesec_narudzbe",
+            "dataType": "int64",
+            "isDataTypeInferred": true,
+            "expression": "MONTH([order_date])"
+          },
+          {
+            "type": "calculated",
+            "name": "kvartal_naruzdbe",
+            "dataType": "string",
+            "isDataTypeInferred": true,
+            "expression": "SWITCH(QUARTER([order_date]), 1, \"prvi\", 2, \"drugi\", 3, \"treći\", 4, \"četvrti\")"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_orders_customers",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[dim_orders_customers].* FROM [dbo].[dim_orders_customers] ",
+              "dataSource": "SqlServer localhost Ispit_2020_08_07"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "godina",
+            "expression": "CALCULATE(COUNT([godina_narudzbe]), dim_orders_customers[godina_narudzbe] = 2016)"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[dim_orders_customers].* FROM [dbo].[dim_orders_customers] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_orders_customers"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "dim_products",
+        "columns": [
+          {
+            "name": "dim_products_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_products_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "product_id",
+            "dataType": "int64",
+            "sourceColumn": "product_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "product_name",
+            "dataType": "string",
+            "sourceColumn": "product_name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "brand_id",
+            "dataType": "int64",
+            "sourceColumn": "brand_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "category_id",
+            "dataType": "int64",
+            "sourceColumn": "category_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "model_year",
+            "dataType": "int64",
+            "sourceColumn": "model_year",
+            "sourceProviderType": "SmallInt"
+          },
+          {
+            "name": "list_price",
+            "dataType": "double",
+            "sourceColumn": "list_price",
+            "sourceProviderType": "Numeric"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_products",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[dim_products].* FROM [dbo].[dim_products] ",
+              "dataSource": "SqlServer localhost Ispit_2020_08_07"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "kategorija",
+            "expression": "CALCULATE(COUNT(dim_products[category_id]), dim_products[category_id]< 5)"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[dim_products].* FROM [dbo].[dim_products] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_products"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "dim_stores_orders",
+        "columns": [
+          {
+            "name": "dim_stores_orders_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_stores_orders_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "order_id",
+            "dataType": "int64",
+            "sourceColumn": "order_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "store_id",
+            "dataType": "int64",
+            "sourceColumn": "store_id",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "store_name",
+            "dataType": "string",
+            "sourceColumn": "store_name",
+            "sourceProviderType": "Char"
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city",
+            "sourceProviderType": "Char"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_stores_orders",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[dim_stores_orders].* FROM [dbo].[dim_stores_orders] ",
+              "dataSource": "SqlServer localhost Ispit_2020_08_07"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "grad",
+            "expression": "CALCULATE(COUNT(dim_stores_orders[city]), dim_stores_orders[city] = \"Santa Cruz\")"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[dim_stores_orders].* FROM [dbo].[dim_stores_orders] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "dim_stores_orders"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      },
+      {
+        "name": "fact_items",
+        "columns": [
+          {
+            "name": "fact_items_key",
+            "dataType": "int64",
+            "sourceColumn": "fact_items_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dim_products_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_products_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dim_orders_customers_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_orders_customers_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "dim_stores_orders_key",
+            "dataType": "int64",
+            "sourceColumn": "dim_stores_orders_key",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "quantity",
+            "dataType": "int64",
+            "sourceColumn": "quantity",
+            "sourceProviderType": "Integer"
+          },
+          {
+            "name": "list_price",
+            "dataType": "double",
+            "sourceColumn": "list_price",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "name": "discount",
+            "dataType": "double",
+            "sourceColumn": "discount",
+            "sourceProviderType": "Numeric"
+          },
+          {
+            "type": "calculated",
+            "name": "ukupna_svota",
+            "dataType": "double",
+            "isDataTypeInferred": true,
+            "expression": "[list_price]*[quantity]*(1-[discount])"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_items",
+            "dataView": "full",
+            "source": {
+              "type": "query",
+              "query": " SELECT [dbo].[fact_items].* FROM [dbo].[fact_items] ",
+              "dataSource": "SqlServer localhost Ispit_2020_08_07"
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "cijena",
+            "expression": "SUM(fact_items[list_price])"
+          },
+          {
+            "name": "ukupno",
+            "expression": "SUM(fact_items[ukupna_svota])"
+          },
+          {
+            "name": "kolicina",
+            "expression": "AVERAGE(fact_items[quantity])"
+          },
+          {
+            "name": "popust_prosjek",
+            "expression": "AVERAGE(fact_items[discount])"
+          }
+        ],
+        "annotations": [
+          {
+            "name": "_TM_ExtProp_QueryDefinition",
+            "value": " SELECT [dbo].[fact_items].* FROM [dbo].[fact_items] "
+          },
+          {
+            "name": "_TM_ExtProp_DbTableName",
+            "value": "fact_items"
+          },
+          {
+            "name": "_TM_ExtProp_DbSchemaName",
+            "value": "dbo"
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "4f9ebe6b-149d-4a0c-a79e-d893541e7acb",
+        "fromTable": "fact_items",
+        "fromColumn": "dim_orders_customers_key",
+        "toTable": "dim_orders_customers",
+        "toColumn": "dim_orders_customers_key"
+      },
+      {
+        "name": "2e0a37be-fe45-4e9a-b7ed-795bf359c597",
+        "fromTable": "fact_items",
+        "fromColumn": "dim_products_key",
+        "toTable": "dim_products",
+        "toColumn": "dim_products_key"
+      },
+      {
+        "name": "94a039b8-270a-4e74-b62c-6daf51e371c6",
+        "fromTable": "fact_items",
+        "fromColumn": "dim_stores_orders_key",
+        "toTable": "dim_stores_orders",
+        "toColumn": "dim_stores_orders_key"
+      }
+    ],
+    "annotations": [
+      {
+        "name": "ClientCompatibilityLevel",
+        "value": "400"
+      }
+    ]
+  },
+  "id": "SemanticModel"
+}

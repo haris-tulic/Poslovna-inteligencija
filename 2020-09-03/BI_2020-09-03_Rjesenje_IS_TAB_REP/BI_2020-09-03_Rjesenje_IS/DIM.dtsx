@@ -1,0 +1,1299 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/30/2021 6:05:41 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-OOH0CCQ"
+  DTS:CreatorName="DESKTOP-OOH0CCQ\Irma Maslesa"
+  DTS:DTSID="{14C417FD-038D-49D8-BC5E-4427BCE66D80}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.128"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dim"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{53E8A8B6-0857-412C-8595-D54A82A03477}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Ispit_2020_09_03]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{E51A6B8F-BA84-4215-8726-9DDB7A924595}"
+      DTS:ObjectName="LocalHost.Ispit_2020_09_03">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Ispit_2020_09_03;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Tecajevi_Ispit]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{7FF3F057-53BF-44CE-80FE-D3BC54EE710A}"
+      DTS:ObjectName="LocalHost.Tecajevi_Ispit">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Tecajevi_Ispit;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\dim"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{847B89B9-7EA5-428B-B0E4-6097387EC793}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="dim"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\dim\dim_ocjena"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="dim_ocjena"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_ocjena]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim\dim_ocjena.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Ispit_2020_09_03]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Ispit_2020_09_03]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].Columns[PolaznikID]"
+                      cachedDataType="i4"
+                      cachedName="PolaznikID"
+                      externalMetadataColumnId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[polaznikID]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[PolaznikID]" />
+                    <inputColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].Columns[OcjenaPohadjanja]"
+                      cachedDataType="i4"
+                      cachedName="OcjenaPohadjanja"
+                      externalMetadataColumnId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[ocjenaPohadjanja]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[OcjenaPohadjanja]" />
+                    <inputColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].Columns[NazivTecaja]"
+                      cachedDataType="wstr"
+                      cachedLength="100"
+                      cachedName="NazivTecaja"
+                      externalMetadataColumnId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[nazivTecaja]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[NazivTecaja]" />
+                    <inputColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].Columns[DatumPocetka]"
+                      cachedDataType="dbDate"
+                      cachedName="DatumPocetka"
+                      externalMetadataColumnId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[datumPocetka]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[DatumPocetka]" />
+                    <inputColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].Columns[god_pocetka]"
+                      cachedDataType="i4"
+                      cachedName="god_pocetka"
+                      externalMetadataColumnId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[god_pocetka]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[god_pocetka]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[polaznikID]"
+                      dataType="i4"
+                      name="polaznikID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[dim_ocjena_key]"
+                      dataType="i4"
+                      name="dim_ocjena_key" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[ocjenaPohadjanja]"
+                      dataType="i4"
+                      name="ocjenaPohadjanja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[nazivTecaja]"
+                      dataType="wstr"
+                      length="100"
+                      name="nazivTecaja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[datumPocetka]"
+                      dataType="dbDate"
+                      name="datumPocetka" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input].ExternalColumns[god_pocetka]"
+                      dataType="i4"
+                      name="god_pocetka" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim\dim_ocjena.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\dim_ocjena.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim\dim_ocjena.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim\dim_ocjena.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim\dim_ocjena.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim\dim_polaznik_detalji"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="dim_polaznik_detalji"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_polaznik_detalji]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim\dim_polaznik_detalji.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Ispit_2020_09_03]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Ispit_2020_09_03]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].Columns[PolaznikID]"
+                      cachedDataType="i4"
+                      cachedName="PolaznikID"
+                      externalMetadataColumnId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[polaznikID]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[PolaznikID]" />
+                    <inputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].Columns[Spol]"
+                      cachedDataType="wstr"
+                      cachedLength="1"
+                      cachedName="Spol"
+                      externalMetadataColumnId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[spol]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[Spol]" />
+                    <inputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].Columns[DatumRodjenja]"
+                      cachedDataType="dbDate"
+                      cachedName="DatumRodjenja"
+                      externalMetadataColumnId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[datumRodjenja]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[DatumRodjenja]" />
+                    <inputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].Columns[UstanovaID]"
+                      cachedDataType="i4"
+                      cachedName="UstanovaID"
+                      externalMetadataColumnId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[ustanovaID]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[UstanovaID]" />
+                    <inputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].Columns[NazivGrada]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="NazivGrada"
+                      externalMetadataColumnId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[nazivGrada]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivGrada]" />
+                    <inputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].Columns[NazivZupanije]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="NazivZupanije"
+                      externalMetadataColumnId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[nazivZupanije]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivZupanije]" />
+                    <inputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].Columns[NazivTipaPolaznika]"
+                      cachedDataType="wstr"
+                      cachedLength="50"
+                      cachedName="NazivTipaPolaznika"
+                      externalMetadataColumnId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[nazivTipaPolaznik]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivTipaPolaznika]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[dim_polaznik_detalji_key]"
+                      dataType="i4"
+                      name="dim_polaznik_detalji_key" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[polaznikID]"
+                      dataType="i4"
+                      name="polaznikID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[spol]"
+                      dataType="wstr"
+                      length="1"
+                      name="spol" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[datumRodjenja]"
+                      dataType="dbDate"
+                      name="datumRodjenja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[ustanovaID]"
+                      dataType="i4"
+                      name="ustanovaID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[nazivGrada]"
+                      dataType="wstr"
+                      length="50"
+                      name="nazivGrada" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[nazivZupanije]"
+                      dataType="wstr"
+                      length="50"
+                      name="nazivZupanije" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input].ExternalColumns[nazivTipaPolaznik]"
+                      dataType="wstr"
+                      length="50"
+                      name="nazivTipaPolaznik" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim\dim_polaznik_detalji.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim\dim_polaznik_detalji.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim\dim_polaznik_detalji.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim\dim_polaznik_detalji.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim\dim_redovnost"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="dim_redovnost"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[dim_redovnost]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim\dim_redovnost.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Ispit_2020_09_03]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Ispit_2020_09_03]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].Columns[PolaznikID]"
+                      cachedDataType="i4"
+                      cachedName="PolaznikID"
+                      externalMetadataColumnId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].ExternalColumns[polaznikID]"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[PolaznikID]" />
+                    <inputColumn
+                      refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].Columns[DatumPohadjanja]"
+                      cachedDataType="dbDate"
+                      cachedName="DatumPohadjanja"
+                      externalMetadataColumnId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].ExternalColumns[datumPohadjanja]"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[DatumPohadjanja]" />
+                    <inputColumn
+                      refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].Columns[Prisutan]"
+                      cachedDataType="i4"
+                      cachedName="Prisutan"
+                      externalMetadataColumnId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].ExternalColumns[prisutan]"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[Prisutan]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].ExternalColumns[polaznikID]"
+                      dataType="i4"
+                      name="polaznikID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].ExternalColumns[dim_redovnost_key]"
+                      dataType="i4"
+                      name="dim_redovnost_key" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].ExternalColumns[datumPohadjanja]"
+                      dataType="dbDate"
+                      name="datumPohadjanja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input].ExternalColumns[prisutan]"
+                      dataType="i4"
+                      name="prisutan" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\dim\dim_redovnost.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\dim_redovnost.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim\dim_redovnost.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim\dim_redovnost.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim\dim_redovnost.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim\ocjena"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="ocjena"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[polaznik_detalji]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        pohadjanje.PolaznikID, pohadjanje.OcjenaPohadjanja, tecaj.NazivTecaja, odrzavanje.DatumPocetka, odrzavanje.god_pocetka
+FROM            odrzavanje INNER JOIN
+                         pohadjanje ON odrzavanje.OdrzavanjeID = pohadjanje.OdrzavanjeID INNER JOIN
+                         tecaj ON odrzavanje.TecajID = tecaj.TecajID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim\ocjena.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Tecajevi_Ispit]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Tecajevi_Ispit]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dim\ocjena.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[PolaznikID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[PolaznikID]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[PolaznikID]"
+                      name="PolaznikID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[OcjenaPohadjanja]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[OcjenaPohadjanja]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[OcjenaPohadjanja]"
+                      name="OcjenaPohadjanja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[NazivTecaja]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[NazivTecaja]"
+                      length="100"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[NazivTecaja]"
+                      name="NazivTecaja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[DatumPocetka]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[DatumPocetka]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[DatumPocetka]"
+                      name="DatumPocetka"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[god_pocetka]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[god_pocetka]"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Output].Columns[god_pocetka]"
+                      name="god_pocetka"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[PolaznikID]"
+                      dataType="i4"
+                      name="PolaznikID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[OcjenaPohadjanja]"
+                      dataType="i4"
+                      name="OcjenaPohadjanja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[NazivTecaja]"
+                      dataType="wstr"
+                      length="100"
+                      name="NazivTecaja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[DatumPocetka]"
+                      dataType="dbDate"
+                      name="DatumPocetka" />
+                    <externalMetadataColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Output].ExternalColumns[god_pocetka]"
+                      dataType="i4"
+                      name="god_pocetka" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[PolaznikID]"
+                      dataType="i4"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[PolaznikID]"
+                      name="PolaznikID" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[OcjenaPohadjanja]"
+                      dataType="i4"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[OcjenaPohadjanja]"
+                      name="OcjenaPohadjanja" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[NazivTecaja]"
+                      dataType="wstr"
+                      length="100"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[NazivTecaja]"
+                      name="NazivTecaja" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[DatumPocetka]"
+                      dataType="dbDate"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[DatumPocetka]"
+                      name="DatumPocetka" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[god_pocetka]"
+                      dataType="i4"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[god_pocetka]"
+                      name="god_pocetka" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim\ocjena.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim\polaznik_detalji"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="polaznik_detalji"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[polaznik_detalji]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim\polaznik_detalji.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Tecajevi_Ispit]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Tecajevi_Ispit]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[PolaznikID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[PolaznikID]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[PolaznikID]"
+                      name="PolaznikID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[Spol]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[Spol]"
+                      length="1"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[Spol]"
+                      name="Spol"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[DatumRodjenja]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[DatumRodjenja]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[DatumRodjenja]"
+                      name="DatumRodjenja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[UstanovaID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[UstanovaID]"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[UstanovaID]"
+                      name="UstanovaID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivGrada]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[NazivGrada]"
+                      length="50"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivGrada]"
+                      name="NazivGrada"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivZupanije]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[NazivZupanije]"
+                      length="50"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivZupanije]"
+                      name="NazivZupanije"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivTipaPolaznika]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[NazivTipaPolaznika]"
+                      length="50"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].Columns[NazivTipaPolaznika]"
+                      name="NazivTipaPolaznika"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[PolaznikID]"
+                      dataType="i4"
+                      name="PolaznikID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[Spol]"
+                      dataType="wstr"
+                      length="1"
+                      name="Spol" />
+                    <externalMetadataColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[DatumRodjenja]"
+                      dataType="dbDate"
+                      name="DatumRodjenja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[UstanovaID]"
+                      dataType="i4"
+                      name="UstanovaID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[NazivGrada]"
+                      dataType="wstr"
+                      length="50"
+                      name="NazivGrada" />
+                    <externalMetadataColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[NazivZupanije]"
+                      dataType="wstr"
+                      length="50"
+                      name="NazivZupanije" />
+                    <externalMetadataColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output].ExternalColumns[NazivTipaPolaznika]"
+                      dataType="wstr"
+                      length="50"
+                      name="NazivTipaPolaznika" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[PolaznikID]"
+                      dataType="i4"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[PolaznikID]"
+                      name="PolaznikID" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[Spol]"
+                      dataType="wstr"
+                      length="1"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[Spol]"
+                      name="Spol" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[DatumRodjenja]"
+                      dataType="dbDate"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[DatumRodjenja]"
+                      name="DatumRodjenja" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[UstanovaID]"
+                      dataType="i4"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[UstanovaID]"
+                      name="UstanovaID" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[NazivGrada]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[NazivGrada]"
+                      name="NazivGrada" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[NazivZupanije]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[NazivZupanije]"
+                      name="NazivZupanije" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[NazivTipaPolaznika]"
+                      dataType="wstr"
+                      length="50"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[NazivTipaPolaznika]"
+                      name="NazivTipaPolaznika" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\dim\redovnost"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="redovnost"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[polaznik_detalji]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT        pohadjanje.PolaznikID, dolazak.DatumPohadjanja, dolazak.Prisutan
+FROM            pohadjanje INNER JOIN
+                         dolazak ON pohadjanje.PohadjanjeID = dolazak.PohadjanjeID</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\dim\redovnost.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.Tecajevi_Ispit]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.Tecajevi_Ispit]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\dim\redovnost.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[PolaznikID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\redovnost.Outputs[OLE DB Source Output].ExternalColumns[PolaznikID]"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[PolaznikID]"
+                      name="PolaznikID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[DatumPohadjanja]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\redovnost.Outputs[OLE DB Source Output].ExternalColumns[DatumPohadjanja]"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[DatumPohadjanja]"
+                      name="DatumPohadjanja"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[Prisutan]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\dim\redovnost.Outputs[OLE DB Source Output].ExternalColumns[Prisutan]"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Output].Columns[Prisutan]"
+                      name="Prisutan"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Output].ExternalColumns[PolaznikID]"
+                      dataType="i4"
+                      name="PolaznikID" />
+                    <externalMetadataColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Output].ExternalColumns[DatumPohadjanja]"
+                      dataType="dbDate"
+                      name="DatumPohadjanja" />
+                    <externalMetadataColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Output].ExternalColumns[Prisutan]"
+                      dataType="i4"
+                      name="Prisutan" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\dim\redovnost.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[PolaznikID]"
+                      dataType="i4"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[PolaznikID]"
+                      name="PolaznikID" />
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[DatumPohadjanja]"
+                      dataType="dbDate"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[DatumPohadjanja]"
+                      name="DatumPohadjanja" />
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[Prisutan]"
+                      dataType="i4"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[Prisutan]"
+                      name="Prisutan" />
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\dim\redovnost.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\dim.Paths[OLE DB Source Output]"
+              endId="Package\dim\dim_polaznik_detalji.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\dim\polaznik_detalji.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\dim.Paths[OLE DB Source Output1]"
+              endId="Package\dim\dim_ocjena.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\dim\ocjena.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\dim.Paths[OLE DB Source Output2]"
+              endId="Package\dim\dim_redovnost.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\dim\redovnost.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="96,42"
+          Id="Package\dim"
+          TopLeft="152,55" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\dim">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="152,42"
+          Id="Package\dim\polaznik_detalji"
+          TopLeft="26,6" />
+        <NodeLayout
+          Size="175,42"
+          Id="Package\dim\dim_polaznik_detalji"
+          TopLeft="14,85" />
+        <EdgeLayout
+          Id="Package\dim.Paths[OLE DB Source Output]"
+          TopLeft="101.75,48">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="110,42"
+          Id="Package\dim\ocjena"
+          TopLeft="212,6" />
+        <NodeLayout
+          Size="133,42"
+          Id="Package\dim\dim_ocjena"
+          TopLeft="200,85" />
+        <EdgeLayout
+          Id="Package\dim.Paths[OLE DB Source Output1]"
+          TopLeft="266.75,48">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="126,42"
+          Id="Package\dim\redovnost"
+          TopLeft="112,135" />
+        <NodeLayout
+          Size="149,42"
+          Id="Package\dim\dim_redovnost"
+          TopLeft="101,200" />
+        <EdgeLayout
+          Id="Package\dim.Paths[OLE DB Source Output2]"
+          TopLeft="175.25,177">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23"
+              Start="0,0"
+              End="0,15.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim\polaznik_detalji">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim\dim_polaznik_detalji">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim\ocjena">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim\dim_ocjena">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim\redovnost">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\dim\dim_redovnost">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
